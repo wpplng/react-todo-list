@@ -1,6 +1,6 @@
 # React Todo List
 
-In this exercise I want you to create a todo list with React Typescript. The todo list is will be simple, not any fancy functionalities or animations _(unless you relly want to get creative)_. The purpose is to solve as much as possible with React and apply a react mindset while also adding a router.
+In this exercise I want you to create a todo list with React Typescript. The todo list is will be simple, not any fancy functionalities or animations _(unless you relly want to get creative)_. The purpose is to solve as much as possible with React and apply a react mindset.
 
 The exercise comes in two steps that you must follow. Each step comes with a set of user stories. A user story is basically just a requirement of your application but it comes like a description of a feature.
 
