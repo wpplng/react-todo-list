@@ -4,13 +4,13 @@ import { TextInput } from '../elements/TextInput';
 import type { TodoType } from '../utilities/types';
 
 interface AddTodoProps {
-  formData: TodoType;
+  newTodo: TodoType;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
 
 const AddTodo = (props: AddTodoProps): ReactElement => {
-  const { onSubmit, onChange, formData } = props;
+  const { onSubmit, onChange, newTodo } = props;
 
   return (
     <form onSubmit={onSubmit} className='add-todo'>
@@ -19,7 +19,7 @@ const AddTodo = (props: AddTodoProps): ReactElement => {
         name='todo'
         label='What do you need to do?'
         type='text'
-        value={formData.todo}
+        value={newTodo.todo}
         onChange={onChange}
       />
       <TextInput
@@ -27,7 +27,7 @@ const AddTodo = (props: AddTodoProps): ReactElement => {
         name='author'
         label='Who wrote the todo?'
         type='text'
-        value={formData.author}
+        value={newTodo.author}
         onChange={onChange}
       />
       <Button type='submit' text='Add todo' disabled={false} />

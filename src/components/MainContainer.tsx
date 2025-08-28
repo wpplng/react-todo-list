@@ -4,23 +4,31 @@ import TodoList from './TodoList';
 import type { TodoType } from '../utilities/types';
 
 const MainContainer = (): ReactElement => {
-  const [formData, setFormData] = useState<TodoType>({
+  // FIXME: Move new todo state and onchange to add todo component to prevent re-render
+  const [newTodo, setNewTodo] = useState<TodoType>({
     todo: '',
     author: '',
     timestamp: null,
   });
+  const [todos, setTodos] = useState<TodoType[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setNewTodo((prev) => ({ ...prev, [name]: value }));
+    console.log('n', newTodo);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    formData.timestamp = Date.now();
+    const todo: TodoType = {
+      todo: newTodo.todo,
+      author: newTodo.author,
+      timestamp: Date.now(),
+    };
 
-    console.log(formData);
-    setFormData({ todo: '', author: '', timestamp: null });
+    setTodos((prev) => [todo, ...prev]);
+
+    setNewTodo({ todo: '', author: '', timestamp: null });
   };
 
   return (
@@ -28,9 +36,9 @@ const MainContainer = (): ReactElement => {
       <AddTodo
         onChange={handleChange}
         onSubmit={handleSubmit}
-        formData={formData}
+        newTodo={newTodo}
       />
-      <TodoList />
+      <TodoList todos={todos} />
     </section>
   );
 };
