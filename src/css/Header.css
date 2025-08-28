@@ -1,0 +1,13 @@
+.header {
+  background-color: #f1ece6;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h1 {
+  text-transform: uppercase;
+  font-size: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+  font-weight: 200;
+}
