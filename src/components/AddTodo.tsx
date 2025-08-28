@@ -25,7 +25,7 @@ const AddTodo = (props: AddTodoProps): ReactElement => {
       <TextInput
         id='author'
         name='author'
-        label='What do you need to do?'
+        label='Who wrote the todo?'
         type='text'
         value={formData.author}
         onChange={onChange}
