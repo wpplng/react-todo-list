@@ -1,11 +1,11 @@
 .todo-list-item {
   display: flex;
   align-items: center;
-  padding: 1rem 0.8rem;
+  padding: 1.5rem 0.8rem 0.5rem 0.8rem;
+  border-bottom: 1px solid var(--blue);
 }
 .todo-list-item li {
   list-style: none;
-  border-bottom: 1px solid var(--blue);
   margin-left: 1rem;
   margin-right: 1rem;
   width: 100%;
@@ -30,4 +30,8 @@
   font-size: 1rem;
   color: var(--gray);
   height: 2rem;
+}
+
+.todo-list-item-completed {
+  color: var(--gray);
 }

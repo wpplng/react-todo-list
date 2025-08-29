@@ -3,7 +3,7 @@
   background-color: var(--light-yellow);
   border: none;
   border-radius: 50px;
-  padding: 1rem 0.8rem;
+  padding: 1.2rem 0.8rem;
 }
 
 .text-input input::placeholder {

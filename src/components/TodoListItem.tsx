@@ -6,12 +6,14 @@ interface TodoListItemProps {
   todo: TodoType;
   onEditTodo: (updated: TodoType) => void;
   onRemoveTodo: (todo: TodoType) => void;
+  onToggleCompleted: (id: string) => void;
 }
 
 const TodoListItem = ({
   todo,
   onEditTodo,
   onRemoveTodo,
+  onToggleCompleted,
 }: TodoListItemProps): ReactElement => {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.todo);
@@ -49,7 +51,13 @@ const TodoListItem = ({
   const renderTodoItems = () => {
     return (
       <>
-        <span className='todo-list-item-todo'>{todo.todo}</span>
+        <span
+          className={`todo-list-item-todo ${
+            todo.completed ? 'todo-list-item-completed' : ''
+          }`}
+        >
+          {todo.todo}
+        </span>
         <span className='todo-list-item-end'>
           by: {todo.author} {new Date(todo.timestamp ?? 0).toLocaleString()}
           <span
@@ -80,8 +88,13 @@ const TodoListItem = ({
 
   return (
     <div className='todo-list-item'>
-      <span className='material-symbols-outlined'>check_circle</span>
-      {/* <span className='material-symbols-outlined'>radio_button_unchecked</span> */}
+      <span
+        className='material-symbols-outlined'
+        onClick={() => onToggleCompleted(todo.id)}
+        style={{ cursor: 'pointer' }}
+      >
+        {todo.completed ? 'check_circle' : 'radio_button_unchecked'}
+      </span>
       <li>{isEditing ? renderEditForm() : renderTodoItems()}</li>
     </div>
   );

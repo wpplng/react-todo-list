@@ -30,6 +30,14 @@ const MainContainer = (): ReactElement => {
     setTodos(todos.filter((t) => t !== todo));
   };
 
+  const handleToggleCompleted = (id: string) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
@@ -41,6 +49,7 @@ const MainContainer = (): ReactElement => {
         todos={todos}
         onEditTodo={handleEditTodo}
         onRemoveTodo={handleRemoveTodo}
+        onToggleCompleted={handleToggleCompleted}
       />
     </div>
   );
