@@ -1,6 +1,7 @@
 export interface TodoType {
-  // FIXME: add neccecary values eg id, completed
+  id: string;
   todo: string;
   author: string;
   timestamp?: number;
+  completed: boolean;
 }

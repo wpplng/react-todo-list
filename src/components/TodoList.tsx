@@ -8,13 +8,13 @@ interface TodoListProps {
 
 const TodoList = ({ todos }: TodoListProps): ReactElement => {
   return (
-    <section className='todo-list'>
+    <article className='todo-list'>
       <ul>
         {todos.map((todo) => (
-          <TodoListItem todo={todo} key={todo.todo} />
+          <TodoListItem todo={todo} key={todo.id} />
         ))}
       </ul>
-    </section>
+    </article>
   );
 };
 export default TodoList;
