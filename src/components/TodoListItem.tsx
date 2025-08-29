@@ -3,9 +3,13 @@ import type { TodoType } from '../utilities/types';
 
 interface TodoListItemProps {
   todo: TodoType;
+  onRemoveTodo: (todo: TodoType) => void;
 }
 
-const TodoListItem = ({ todo }: TodoListItemProps): ReactElement => {
+const TodoListItem = ({
+  todo,
+  onRemoveTodo,
+}: TodoListItemProps): ReactElement => {
   return (
     <div className='todo-list-item'>
       <span className='material-symbols-outlined'>check_circle</span>
@@ -18,7 +22,12 @@ const TodoListItem = ({ todo }: TodoListItemProps): ReactElement => {
         </span>
       </li>
       <span className='material-symbols-outlined'>edit</span>
-      <span className='material-symbols-outlined'>delete</span>
+      <span
+        className='material-symbols-outlined'
+        onClick={() => onRemoveTodo(todo)}
+      >
+        delete
+      </span>
     </div>
   );
 };
