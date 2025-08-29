@@ -6,7 +6,7 @@ interface AddTodoProps {
   onAddTodo: (newTodo: string, author: string) => void;
 }
 
-const AddTodo = ({ onAddTodo }: AddTodoProps): ReactElement => {
+const TodoForm = ({ onAddTodo }: AddTodoProps): ReactElement => {
   const [newTodo, setNewTodo] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
 
@@ -40,4 +40,4 @@ const AddTodo = ({ onAddTodo }: AddTodoProps): ReactElement => {
   );
 };
 
-export default AddTodo;
+export default TodoForm;
