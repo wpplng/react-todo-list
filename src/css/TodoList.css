@@ -1,0 +1,8 @@
+.todo-list {
+  width: 700px;
+  margin-top: 3rem;
+  background-color: var(--light-yellow);
+  border-radius: 50px;
+  min-height: 500px;
+  padding: 1rem;
+}

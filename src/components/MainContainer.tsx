@@ -8,14 +8,13 @@ const MainContainer = (): ReactElement => {
   const [newTodo, setNewTodo] = useState<TodoType>({
     todo: '',
     author: '',
-    timestamp: null,
+    timestamp: undefined,
   });
   const [todos, setTodos] = useState<TodoType[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewTodo((prev) => ({ ...prev, [name]: value }));
-    console.log('n', newTodo);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -28,7 +27,7 @@ const MainContainer = (): ReactElement => {
 
     setTodos((prev) => [todo, ...prev]);
 
-    setNewTodo({ todo: '', author: '', timestamp: null });
+    setNewTodo({ todo: '', author: '', timestamp: undefined });
   };
 
   return (
