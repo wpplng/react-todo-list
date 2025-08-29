@@ -4,15 +4,25 @@ import TodoListItem from './TodoListItem';
 
 interface TodoListProps {
   todos: TodoType[];
+  onEditTodo: (updated: TodoType) => void;
   onRemoveTodo: (todo: TodoType) => void;
 }
 
-const TodoList = ({ todos, onRemoveTodo }: TodoListProps): ReactElement => {
+const TodoList = ({
+  todos,
+  onEditTodo,
+  onRemoveTodo,
+}: TodoListProps): ReactElement => {
   return (
     <article className='todo-list'>
       <ul>
         {todos.map((todo) => (
-          <TodoListItem todo={todo} key={todo.id} onRemoveTodo={onRemoveTodo} />
+          <TodoListItem
+            todo={todo}
+            key={todo.id}
+            onEditTodo={onEditTodo}
+            onRemoveTodo={onRemoveTodo}
+          />
         ))}
       </ul>
     </article>

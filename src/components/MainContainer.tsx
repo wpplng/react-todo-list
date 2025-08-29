@@ -10,10 +10,6 @@ const MainContainer = (): ReactElement => {
     return stored ? JSON.parse(stored) : [];
   });
 
-  const handleRemoveTodo = (todo: TodoType) => {
-    setTodos(todos.filter((t) => t !== todo));
-  };
-
   const handleAddTodo = (newTodo: string, author: string) => {
     const todo: TodoType = {
       id: uuid(),
@@ -26,6 +22,14 @@ const MainContainer = (): ReactElement => {
     setTodos((prev) => [todo, ...prev]);
   };
 
+  const handleEditTodo = (updated: TodoType) => {
+    setTodos((prev) => prev.map((t) => (t.id === updated.id ? updated : t)));
+  };
+
+  const handleRemoveTodo = (todo: TodoType) => {
+    setTodos(todos.filter((t) => t !== todo));
+  };
+
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
@@ -33,7 +37,11 @@ const MainContainer = (): ReactElement => {
   return (
     <div className='main-container'>
       <TodoForm onAddTodo={handleAddTodo} />
-      <TodoList todos={todos} onRemoveTodo={handleRemoveTodo} />
+      <TodoList
+        todos={todos}
+        onEditTodo={handleEditTodo}
+        onRemoveTodo={handleRemoveTodo}
+      />
     </div>
   );
 };
